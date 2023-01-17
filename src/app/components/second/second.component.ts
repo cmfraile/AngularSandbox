@@ -5,6 +5,8 @@ import { AbstractControl } from '@angular/forms';
 import { ValidatorFn , AsyncValidatorFn } from '@angular/forms';
 import { ValidationErrors } from '@angular/forms';
 
+interface digimon {name:string,img:string,level:string}
+
 @Component({
   selector: 'app-second',
   templateUrl: './second.component.html',
@@ -16,21 +18,19 @@ export class SecondComponent {
     const { value } = control ; let validationErrors:ValidationErrors|null = null ;
     if(invalidTerms.includes(value)){validationErrors = {['invalidTerm']:true}};
     return validationErrors ;
-  }
+  };
 
   asyncValidatorExample = async(control:AbstractControl):Promise<ValidationErrors | null> => {
     const { value } = control ; let validationErrors:ValidationErrors|null = null ;
     try{
-      this.http.get('https://digimon-api.vercel.app/api/digimon').subscribe({
+      this.http.get<digimon[]>('https://digimon-api.vercel.app/api/digimon').subscribe({
       next:(resp) => {
-
+        resp.map( digimon => )
       },
-      error:() => {
-
-      },
+      error:() => { throw new Error('Request fail') },
       //finally:() => {}
     })
-    }catch(err){validationErrors = {['requestFail']:true}};
+    }catch(err){() => {validationErrors = {['Request fail']:true}}};
     return validationErrors;
   }
   
