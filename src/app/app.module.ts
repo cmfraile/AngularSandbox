@@ -4,13 +4,16 @@ import { RouterModule } from '@angular/router';
 import { Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { FirstComponent } from './components/first/first.component';
+import { NavigateButtonComponent } from './components/navigate-button/navigate-button.component';
 import { SecondComponent } from './components/second/second.component';
-import { ThirdComponent } from './component/third/third.component';
-import { NavigateButtonComponent } from './component/navigate-button/navigate-button.component';
+import { ThirdComponent } from './components/third/third.component';
 
 const routes: Routes = [
-  {path:'',component:FirstComponent},
-  {path:'**',redirectTo:'',pathMatch:'full'},
+  {path:'1',component:FirstComponent},
+  {path:'2',component:SecondComponent},
+  {path:'3',component:ThirdComponent},
+  {path:'',redirectTo:'1',pathMatch:'full'},
+  {path:'**',redirectTo:'1',pathMatch:'full'},
   //{path:'admin',children:rutaspaneladmin},
 ];
 
