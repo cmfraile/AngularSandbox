@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./first.component.sass']
 })
 export class FirstComponent {
-
+  counter:number = 0
+  addToCounter(amount:number){this.counter+=amount};
 }

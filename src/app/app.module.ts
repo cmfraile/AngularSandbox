@@ -7,6 +7,7 @@ import { FirstComponent } from './components/first/first.component';
 import { NavigateButtonComponent } from './components/navigate-button/navigate-button.component';
 import { SecondComponent } from './components/second/second.component';
 import { ThirdComponent } from './components/third/third.component';
+import { AddButtonComponent } from './components/add-button/add-button.component';
 
 const routes: Routes = [
   {path:'1',component:FirstComponent},
@@ -23,7 +24,8 @@ const routes: Routes = [
     FirstComponent,
     SecondComponent,
     ThirdComponent,
-    NavigateButtonComponent
+    NavigateButtonComponent,
+    AddButtonComponent
   ],
   imports: [
     BrowserModule,

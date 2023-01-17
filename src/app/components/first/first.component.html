@@ -1,3 +1,10 @@
 <div class="first_root centerDefault appWindow">
-    FIRST
+    <h3>INPUT / OUTPUT COUNTER</h3>
+    <p> Contador : {{counter}}</p>
+    <div class="buttonGrid">
+        <ng-container *ngFor="let x of [1,2,3,4,5]">
+            <app-add-button [amount]="x" (amountEmit)="addToCounter($event)"/>
+        </ng-container>
+    </div>
+    
 </div>
