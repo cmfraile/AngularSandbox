@@ -8,6 +8,7 @@ import { NavigateButtonComponent } from './components/navigate-button/navigate-b
 import { SecondComponent } from './components/second/second.component';
 import { ThirdComponent } from './components/third/third.component';
 import { AddButtonComponent } from './components/add-button/add-button.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {path:'1',component:FirstComponent},
@@ -29,6 +30,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot(routes),
   ],
   providers: [],
