@@ -9,6 +9,12 @@ import { SecondComponent } from './components/second/second.component';
 import { ThirdComponent } from './components/third/third.component';
 import { AddButtonComponent } from './components/add-button/add-button.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
+
+const materialModules:any = [BrowserAnimationsModule,MatInputModule]
 
 const routes: Routes = [
   {path:'1',component:FirstComponent},
@@ -32,6 +38,8 @@ const routes: Routes = [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
+    ReactiveFormsModule,
+    ...materialModules
   ],
   providers: [],
   bootstrap: [AppComponent]

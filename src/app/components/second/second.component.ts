@@ -34,21 +34,14 @@ export class SecondComponent {
     }catch(err){() => {validationErrors['request fail'] = true}};
     if(Object.keys(validationErrors).length > 0){return validationErrors}else{return null};
   }
+
+  login(){console.log(this.user)};
   
   user:FormGroup = this.forma.group({
     name:['',[Validators.required,Validators.minLength(5),this.syncValidatorExample(['Carlos'])]],
     surname:['',[Validators.required,Validators.minLength(5),this.asyncValidatorExample]],
     password:['',[Validators.required,Validators.minLength(5)]]
   });
-
-  /*
-  syncValidatorExample:ValidatorFn = (control:AbstractControl) => {
-    const { value } = control ; let validationErrors:ValidationErrors|null = null
-    if(value)
-  }
-  */
-
-  
   
   constructor(
     private forma:FormBuilder,
