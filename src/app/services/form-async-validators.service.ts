@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 interface digimon {name:string,img:string,level:string}
 
@@ -10,17 +11,10 @@ export class FormAsyncValidatorsService {
 
   digiList:string[] = [] ; digiquery:string = 'https://digimon-api.vercel.app/api/digimon';
 
-  private async digimonQuery():Promise<string[]>{
-    return new Promise<string[]>((rs,rj) => {
-      this.http.get<digimon[]>(this.digiquery).subscribe({
-        next:(resp) => {return rs( resp.map(x => x.name))},
-        error:(err) => {rj(err)},
-        //complete:() => {},
-      });
-      return rj()
-    })
-  }
+  private digimonQuery():Observable<digimon[]>{return this.http.get<digimon[]>(this.digiquery)}
 
-  constructor(private http:HttpClient){}
+  constructor(private http:HttpClient){
+    this.digimonQuery().subscribe(resp => {this.digiList = resp.map(x => x.name)})
+  }
 
 }

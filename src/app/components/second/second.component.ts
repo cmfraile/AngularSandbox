@@ -22,7 +22,7 @@ export class SecondComponent {
   asyncValidatorExample = async(control:AbstractControl):Promise<ValidationErrors | null> => {
     const value = control.value.toLowerCase() ; let validationErrors:ValidationErrors = {} ;
     try{
-      if(!this.formAsyncValidators.digiList.includes(value)){validationErrors['request fail'] = true};
+      if(!this.formAsyncValidators.digiList.includes(value)){validationErrors['invalid Term'] = true};
     }catch(err){() => {validationErrors['request fail'] = true}};
     if(Object.keys(validationErrors).length > 0){return validationErrors}else{return null};
   }
