@@ -21,22 +21,23 @@ export class SecondComponent {
   };
 
   asyncValidatorExample = async(control:AbstractControl):Promise<ValidationErrors | null> => {
-    const { value } = control ; let validationErrors:ValidationErrors|null = null ;
+    const value = control.value.toLowerCase() ; let validationErrors:ValidationErrors = {} ;
     try{
       this.http.get<digimon[]>('https://digimon-api.vercel.app/api/digimon').subscribe({
       next:(resp) => {
-        resp.map( digimon => )
+        const digimonList:string[] = resp.map<string>(digimon => digimon.name.toLowerCase());
+        if(digimonList.includes(value)){validationErrors['invalid name'] = true}
       },
       error:() => { throw new Error('Request fail') },
       //finally:() => {}
     })
-    }catch(err){() => {validationErrors = {['Request fail']:true}}};
-    return validationErrors;
+    }catch(err){() => {validationErrors['request fail'] = true}};
+    if(Object.keys(validationErrors).length > 0){return validationErrors}else{return null};
   }
   
   user:FormGroup = this.forma.group({
     name:['',[Validators.required,Validators.minLength(5),this.syncValidatorExample(['Carlos'])]],
-    surname:['',[Validators.required,Validators.minLength(5)]],
+    surname:['',[Validators.required,Validators.minLength(5),this.asyncValidatorExample]],
     password:['',[Validators.required,Validators.minLength(5)]]
   });
 
@@ -52,6 +53,6 @@ export class SecondComponent {
   constructor(
     private forma:FormBuilder,
     private http:HttpClient
-  ){}
+  ){};
 
 }
