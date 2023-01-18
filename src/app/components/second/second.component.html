@@ -1,11 +1,10 @@
 <div class="second_root centerDefault appWindow">
-    <form [formGroup]="user" class="loginForm" (keydown.enter)="login()">
+    <form [formGroup]="user" class="loginForm" (keyup.enter)="login()">
     <!-- <form [formGroup]="user" class="loginForm" (submit)="login()"> -->
         <mat-form-field class="input" appearance="outline"><mat-label>nombre</mat-label><input matInput formControlName="name"></mat-form-field>
         <mat-form-field class="input" appearance="outline"><mat-label>apellido</mat-label><input matInput formControlName="surname"></mat-form-field>
         <mat-form-field class="input" appearance="outline"><mat-label>contraseña</mat-label><input matInput type="password" formControlName="password"></mat-form-field>
     </form>
-    <pre>{{errorfield}}</pre>
 </div>
 
 <!--
