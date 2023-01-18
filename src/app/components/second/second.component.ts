@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup , Validators } from '@angular/forms';
 import { AbstractControl } from '@angular/forms';
-import { ValidatorFn , AsyncValidatorFn } from '@angular/forms';
 import { ValidationErrors } from '@angular/forms';
+import { ValidatorFn } from '@angular/forms';
 
 interface digimon {name:string,img:string,level:string}
 
@@ -26,18 +26,26 @@ export class SecondComponent {
       this.http.get<digimon[]>('https://digimon-api.vercel.app/api/digimon').subscribe({
       next:(resp) => {
         const digimonList:string[] = resp.map<string>(digimon => digimon.name.toLowerCase());
-        if(digimonList.includes(value)){validationErrors['invalid name'] = true}
+        if(!digimonList.includes(value)){validationErrors['invalid name'] = true}
       },
       error:() => { throw new Error('Request fail') },
       //finally:() => {}
     })
     }catch(err){() => {validationErrors['request fail'] = true}};
-    if(Object.keys(validationErrors).length > 0){return validationErrors}else{return null};
+    if(Object.keys(validationErrors).length > 0){
+      this.errorfield = validationErrors;
+      return validationErrors;
+    }else{return null};
+  }
+  
+  errorfield:any = "null";
+
+  login(){
+    console.log('LOGIN');
+    
   }
 
-  login(){console.log(this.user)};
-  
-  user:FormGroup = this.forma.group({
+  public user:FormGroup = this.forma.group({
     name:['',[Validators.required,Validators.minLength(5),this.syncValidatorExample(['Carlos'])]],
     surname:['',[Validators.required,Validators.minLength(5),this.asyncValidatorExample]],
     password:['',[Validators.required,Validators.minLength(5)]]
