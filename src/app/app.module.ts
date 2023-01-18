@@ -13,8 +13,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { ModalComponentComponent } from './components/modal-component/modal-component.component';
 
-const materialModules:any = [BrowserAnimationsModule,MatInputModule]
+const materialModules:any = [
+  BrowserAnimationsModule,MatInputModule,
+  TooltipModule.forRoot(),ModalModule.forRoot()
+]
 
 const routes: Routes = [
   {path:'1',component:FirstComponent},
@@ -32,14 +38,16 @@ const routes: Routes = [
     SecondComponent,
     ThirdComponent,
     NavigateButtonComponent,
-    AddButtonComponent
+    AddButtonComponent,
+    ModalComponentComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
-    ...materialModules
+    ...materialModules,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
