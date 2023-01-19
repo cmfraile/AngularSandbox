@@ -22,6 +22,7 @@ export class FourthComponent {
   public digimonChoose:FormGroup = this.forma.group({
     digimon:['',[Validators.required],[this.asyncValidatorExample]],
   })
+  
 
   constructor(
     private forma:FormBuilder,
