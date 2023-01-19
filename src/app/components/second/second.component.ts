@@ -12,8 +12,6 @@ import { OpenModalService } from 'src/app/services/open-modal.service';
 })
 export class SecondComponent {
 
-  digiCurrent:{name:string,img:string}|undefined;
-
   syncValidatorExample = (invalidTerms:string[]) => (control:AbstractControl) => {
     const { value } = control ; let validationErrors:ValidationErrors|null = null ;
     if(invalidTerms.includes(value)){validationErrors = {['invalidTerm']:true}};
