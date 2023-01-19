@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup , Validators } from '@angular/forms';
 import { AbstractControl } from '@angular/forms';
 import { ValidationErrors } from '@angular/forms';
 import { ValidatorFn } from '@angular/forms';
+import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { FormAsyncValidatorsService } from 'src/app/services/form-async-validators.service';
 import { ModalComponentComponent } from '../modal-component/modal-component.component';
 
@@ -13,8 +14,6 @@ import { ModalComponentComponent } from '../modal-component/modal-component.comp
   styleUrls: ['./second.component.sass']
 })
 export class SecondComponent {
-
-  @ViewChild('modalChild')modalChild!:ModalComponentComponent;
 
   syncValidatorExample = (invalidTerms:string[]) => (control:AbstractControl) => {
     const { value } = control ; let validationErrors:ValidationErrors|null = null ;
@@ -30,7 +29,13 @@ export class SecondComponent {
     if(Object.keys(validationErrors).length > 0){return validationErrors}else{return null};
   }
 
-  login(){this.modalChild.openModalFather()};
+  bsModalRef?:BsModalRef;
+  loginModal(){
+    const initialState:ModalOptions = { initialState: {digimon:this.formAsyncValidators.digiModals.pop()} };
+    this.bsModalRef = this.modalService.show(ModalComponentComponent,initialState);
+  }
+
+  login(){this.loginModal()};
 
   public user:FormGroup = this.forma.group({
     name:['',[Validators.required,Validators.minLength(5),this.syncValidatorExample(['Carlos','Pepe'])]],
@@ -41,6 +46,7 @@ export class SecondComponent {
   constructor(
     private forma:FormBuilder,
     private formAsyncValidators:FormAsyncValidatorsService,
+    private modalService:BsModalService
   ){};
 
 }

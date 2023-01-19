@@ -39,7 +39,6 @@ const routes: Routes = [
     ThirdComponent,
     NavigateButtonComponent,
     AddButtonComponent,
-    ModalComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +49,7 @@ const routes: Routes = [
     BrowserAnimationsModule
   ],
   providers: [],
+  entryComponents:[ModalComponentComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,7 +2,6 @@
     <form [formGroup]="user" class="loginForm" (keyup.enter)="login()">
         <h3>REACTIVE FORMS</h3>
     <!-- <form [formGroup]="user" class="loginForm" (submit)="login()"> -->
-        <app-modal-component #modalChild [title]="'Estado del login'" />
         <mat-form-field class="input" appearance="outline"><mat-label>nombre</mat-label><input matInput formControlName="name"></mat-form-field>
         <mat-form-field class="input" appearance="outline"><mat-label>apellido</mat-label><input matInput formControlName="surname"></mat-form-field>
         <mat-form-field class="input" appearance="outline"><mat-label>contraseña</mat-label><input matInput type="password" formControlName="password"></mat-form-field>

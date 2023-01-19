@@ -1,8 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { Input } from '@angular/core';
-import { TemplateRef } from '@angular/core';
-import { template } from 'underscore';
+import { Component } from '@angular/core';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-modal-component',
@@ -10,14 +7,11 @@ import { template } from 'underscore';
   styleUrls: ['./modal-component.component.sass']
 })
 export class ModalComponentComponent {
-  
-  modalRef?: BsModalRef;
-  @Input()title!:string;
-  private openModal(template:string){this.modalRef = this.modalService.show(template)};
-  public openModalFather(){this.openModal('template')}
-
+  title?:string;
+  digimon?:{name:string,img:string}
   constructor(
-    private modalService:BsModalService
-  ){}
-
+    public bsModalRef:BsModalRef
+  ){
+    console.log(this.bsModalRef.content);
+  }
 }
