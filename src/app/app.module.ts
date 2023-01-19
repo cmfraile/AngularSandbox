@@ -15,11 +15,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { ModalComponent } from './components/modal/modal.component';
+import { OpenModalService } from './services/open-modal.service';
 
 const materialModules:any = [
   BrowserAnimationsModule,MatInputModule,
   TooltipModule.forRoot(),ModalModule.forRoot()
 ]
+
+const entryComponents = [ModalComponent];
+const bootstrapServices = [OpenModalService];
 
 const routes: Routes = [
   {path:'1',component:FirstComponent},
@@ -37,7 +42,8 @@ const routes: Routes = [
     SecondComponent,
     ThirdComponent,
     NavigateButtonComponent,
-    AddButtonComponent
+    AddButtonComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +54,7 @@ const routes: Routes = [
     BrowserAnimationsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  entryComponents:[...entryComponents],
+  bootstrap: [AppComponent,...bootstrapServices]
 })
 export class AppModule { }
