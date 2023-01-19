@@ -17,6 +17,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ModalComponent } from './components/modal/modal.component';
 import { OpenModalService } from './services/open-modal.service';
+import { FourthComponent } from './components/fourth/fourth.component';
 
 const materialModules:any = [
   BrowserAnimationsModule,MatInputModule,
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path:'1',component:FirstComponent},
   {path:'2',component:SecondComponent},
   {path:'3',component:ThirdComponent},
+  {path:'4',component:FourthComponent},
   {path:'',redirectTo:'1',pathMatch:'full'},
   {path:'**',redirectTo:'1',pathMatch:'full'},
   //{path:'admin',children:rutaspaneladmin},
