@@ -1,8 +1,7 @@
-import { ChangeDetectorRef, Component, EventEmitter, Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { BsModalRef, BsModalService , ModalOptions } from 'ngx-bootstrap/modal';
 import { ModalComponent } from '../components/modal/modal.component';
 import { FormAsyncValidatorsService } from './form-async-validators.service';
-import { combineLatest, Observable, Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

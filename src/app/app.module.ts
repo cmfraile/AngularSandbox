@@ -9,15 +9,15 @@ import { SecondComponent } from './components/second/second.component';
 import { ThirdComponent } from './components/third/third.component';
 import { AddButtonComponent } from './components/add-button/add-button.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule , FormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ModalComponent } from './components/modal/modal.component';
-import { OpenModalService } from './services/open-modal.service';
 import { FourthComponent } from './components/fourth/fourth.component';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 const materialModules:any = [
   BrowserAnimationsModule,MatInputModule,
@@ -42,6 +42,7 @@ const routes: Routes = [
     FirstComponent,
     SecondComponent,
     ThirdComponent,
+    FourthComponent,
     NavigateButtonComponent,
     AddButtonComponent,
     ...entryComponents
@@ -52,6 +53,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
     ...materialModules,
+    TypeaheadModule.forRoot(),
     BrowserAnimationsModule
   ],
   providers: [],

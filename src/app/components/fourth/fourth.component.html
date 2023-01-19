@@ -1,3 +1,10 @@
 <div class="fourth_root centerDefault appWindow">
-    
+    <form       [formGroup]="digimonChoose">
+        <input  formControlName="digimon"
+                [typeahead]="formAsyncValidators.digiCheckName"
+                [typeaheadOptionsLimit]="5"
+                [typeaheadMinLength]="0"
+                placeholder="Typeahead inside a form"
+                class="form-control">
+    </form>
 </div>

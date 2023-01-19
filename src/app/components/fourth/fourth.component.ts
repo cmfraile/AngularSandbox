@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormAsyncValidatorsService } from 'src/app/services/form-async-validators.service';
 import { OpenModalService } from 'src/app/services/open-modal.service';
 import { ValidationErrors , AbstractControl } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-fourth',
@@ -19,14 +19,13 @@ export class FourthComponent {
     if(Object.keys(validationErrors).length > 0){return validationErrors}else{return null};
   }
 
-  public digimonChoose:FormGroup = this.forma.group({
-    digimon:['',[Validators.required],[this.asyncValidatorExample]],
+  public digimonChoose:UntypedFormGroup = new UntypedFormGroup({
+    digimon : new UntypedFormControl(undefined,undefined,[this.asyncValidatorExample]),
   })
   
 
   constructor(
-    private forma:FormBuilder,
-    private formAsyncValidators:FormAsyncValidatorsService,
+    public formAsyncValidators:FormAsyncValidatorsService,
     public openModal:OpenModalService
   ){}
 
