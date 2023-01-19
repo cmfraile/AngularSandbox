@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup , Validators } from '@angular/forms';
 import { AbstractControl } from '@angular/forms';
 import { ValidationErrors } from '@angular/forms';
 import { FormAsyncValidatorsService } from 'src/app/services/form-async-validators.service';
+import { OpenModalService } from 'src/app/services/open-modal.service';
 
 @Component({
   selector: 'app-second',
@@ -25,7 +26,7 @@ export class SecondComponent {
     if(Object.keys(validationErrors).length > 0){return validationErrors}else{return null};
   }
 
-  login(){console.log('llegas al login')}
+  login(){this.openModal.openModalWithComponent()};
 
   public user:FormGroup = this.forma.group({
     name:['',[Validators.required,Validators.minLength(5),this.syncValidatorExample(['Carlos','Pepe'])]],
@@ -36,6 +37,7 @@ export class SecondComponent {
   constructor(
     private forma:FormBuilder,
     private formAsyncValidators:FormAsyncValidatorsService,
+    private openModal:OpenModalService
   ){};
 
 }

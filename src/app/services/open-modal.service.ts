@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { BsModalRef, BsModalService , ModalOptions } from 'ngx-bootstrap/modal';
-import { ModalComponentComponent } from '../components/modal-component/modal-component.component';
+import { ModalComponent } from '../components/modal/modal.component';
 import { FormAsyncValidatorsService } from './form-async-validators.service';
 
 @Injectable({
@@ -8,13 +8,16 @@ import { FormAsyncValidatorsService } from './form-async-validators.service';
 })
 export class OpenModalService {
 
-  bsModalRef?:BsModalRef;
-  digimonLoginModal(){
-    const initialState:ModalOptions = { initialState: {digimon:this.formAsyncValidators.digiModals.pop()} };
-    this.bsModalRef = this.modalService.show(ModalComponentComponent,initialState);
+  bsModalRef?: BsModalRef;
+  public openModalWithComponent(){
+    const digiQuery:any = this.formAsync.digiModals.pop() ; console.log(digiQuery)
+    const { name , img } = digiQuery;
+    const initialState:ModalOptions = {initialState:{name,img}}
+    this.bsModalRef = this.modalService.show(ModalComponent,initialState);
   }
+
   constructor(
-    private modalService:BsModalService,
-    private formAsyncValidators:FormAsyncValidatorsService
+    private modalService: BsModalService,
+    private formAsync: FormAsyncValidatorsService
   ){}
 }

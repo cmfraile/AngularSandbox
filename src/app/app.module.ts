@@ -24,7 +24,6 @@ const materialModules:any = [
 ]
 
 const entryComponents = [ModalComponent];
-const bootstrapServices = [OpenModalService];
 
 const routes: Routes = [
   {path:'1',component:FirstComponent},
@@ -43,7 +42,7 @@ const routes: Routes = [
     ThirdComponent,
     NavigateButtonComponent,
     AddButtonComponent,
-    ModalComponent
+    ...entryComponents
   ],
   imports: [
     BrowserModule,
@@ -54,7 +53,6 @@ const routes: Routes = [
     BrowserAnimationsModule
   ],
   providers: [],
-  entryComponents:[...entryComponents],
-  bootstrap: [AppComponent,...bootstrapServices]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

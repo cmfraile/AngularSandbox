@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-modal',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class ModalComponent {
 
+  name:string|undefined = undefined
+  img:string|undefined = undefined
+
+  constructor(public bsModalRef: BsModalRef){}
 }
