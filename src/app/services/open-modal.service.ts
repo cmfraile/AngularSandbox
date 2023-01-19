@@ -18,7 +18,6 @@ export class OpenModalService {
 
   constructor(
     private modalService: BsModalService,
-    private changeDetection: ChangeDetectorRef,
     private formAsync: FormAsyncValidatorsService
   ){}
 }

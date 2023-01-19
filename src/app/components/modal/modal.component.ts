@@ -7,12 +7,12 @@ import { Subscription , combineLatest } from 'rxjs';
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.sass']
 })
-export class ModalComponent implements OnDestroy {
+export class ModalComponent {
 
   name:string|undefined = undefined
   img:string|undefined = undefined
   subscriptions:Subscription[] = [];
-  
+
   private eventsDeploy(){
     const _combine = combineLatest([
       this.modalService.onShow,
@@ -21,7 +21,28 @@ export class ModalComponent implements OnDestroy {
       this.modalService.onHidden
     ]).subscribe(() => this.changeDetection.markForCheck());
  
-    this.subscriptions.push(
+    this.subscriptions.push(_combine);
+  }
+
+  private unsubscribe() {
+    this.subscriptions.forEach((subscription: Subscription) => {
+      subscription.unsubscribe();
+    });
+    this.subscriptions = [];
+  }
+
+  constructor(
+    public bsModalRef: BsModalRef,
+    private modalService: BsModalService,
+    private changeDetection: ChangeDetectorRef,
+  ){ this.eventsDeploy() }
+
+  //ngOnDestroy(): void { this.unsubscribe() }
+
+}
+
+/*
+this.subscriptions.push(
       this.modalService.onShow.subscribe(() => {
         console.log(`onShow event has been fired`);
       })
@@ -50,24 +71,4 @@ export class ModalComponent implements OnDestroy {
         this.unsubscribe();
       })
     );
- 
-    this.subscriptions.push(_combine);
-  }
-
-  private unsubscribe() {
-    this.subscriptions.forEach((subscription: Subscription) => {
-      subscription.unsubscribe();
-    });
-    this.subscriptions = [];
-  }
-
-  constructor(
-    public bsModalRef: BsModalRef,
-    private modalService: BsModalService,
-    private changeDetection: ChangeDetectorRef,
-  ){ this.eventsDeploy() }
-
-  ngOnDestroy(): void { this.unsubscribe() }
-
-
-}
+*/
