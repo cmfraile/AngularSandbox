@@ -1,5 +1,5 @@
 <div class="fourth_root centerDefault appWindow">
-    <form       [formGroup]="digimonChoose">
+    <form       [formGroup]="digimonChoose" (keyup.enter)="login()" >
         <input  formControlName="digimon"
                 [typeahead]="formAsyncValidators.digiCheckName"
                 [typeaheadOptionsLimit]="5"

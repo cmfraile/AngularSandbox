@@ -12,9 +12,9 @@ import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 export class FourthComponent {
 
   asyncValidatorExample = async(control:AbstractControl):Promise<ValidationErrors | null> => {
-    const value = control.value.toLowerCase() ; let validationErrors:ValidationErrors = {} ;
+    const value = control.value ; let validationErrors:ValidationErrors = {};
     try{
-      if(this.formAsyncValidators.digiCheckName.includes(value)){validationErrors['invalid Term'] = true};
+      if(!this.formAsyncValidators.digiCheckName.includes(value)){validationErrors['invalid Term'] = true};
     }catch(err){() => {validationErrors['request fail'] = true}};
     if(Object.keys(validationErrors).length > 0){return validationErrors}else{return null};
   }
@@ -22,7 +22,11 @@ export class FourthComponent {
   public digimonChoose:UntypedFormGroup = new UntypedFormGroup({
     digimon : new UntypedFormControl(undefined,undefined,[this.asyncValidatorExample]),
   })
-  
+
+  login(){
+    if(this.digimonChoose.invalid){return};
+    
+  };
 
   constructor(
     public formAsyncValidators:FormAsyncValidatorsService,

@@ -19,7 +19,7 @@ export class SecondComponent {
   };
 
   asyncValidatorExample = async(control:AbstractControl):Promise<ValidationErrors | null> => {
-    const value = control.value.toLowerCase() ; let validationErrors:ValidationErrors = {} ;
+    const value = control.value ; let validationErrors:ValidationErrors = {} ;
     try{
       if(!this.formAsyncValidators.digiCheckName.includes(value)){validationErrors['invalid Term'] = true};
     }catch(err){() => {validationErrors['request fail'] = true}};

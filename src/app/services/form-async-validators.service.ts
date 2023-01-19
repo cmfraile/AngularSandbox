@@ -19,7 +19,7 @@ export class FormAsyncValidatorsService {
   constructor(private http:HttpClient){
     this.digimonQuery().subscribe(resp => {
       this.digiModals = shuffle(resp.map(x => ({name:x.name,img:x.img})));
-      this.digiCheckName = resp.map(x => x.name);
+      this.digiCheckName = resp.map(x => x.name.toLowerCase());
     })
   }
 
