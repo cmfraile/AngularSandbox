@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Subscription , combineLatest } from 'rxjs';
+import { FormAsyncValidatorsService } from 'src/app/services/form-async-validators.service';
 
 @Component({
   selector: 'app-modal',
@@ -34,8 +35,9 @@ export class ModalComponent {
   constructor(
     public bsModalRef: BsModalRef,
     private modalService: BsModalService,
+    private formAsync: FormAsyncValidatorsService,
     private changeDetection: ChangeDetectorRef,
-  ){ this.eventsDeploy() }
+  ){ this.eventsDeploy() ; this.formAsync.digiCurrent = {name:this.name,img:this.img} }
 
   //ngOnDestroy(): void { this.unsubscribe() }
 

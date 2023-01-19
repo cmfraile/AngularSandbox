@@ -12,6 +12,8 @@ import { OpenModalService } from 'src/app/services/open-modal.service';
 })
 export class SecondComponent {
 
+  digiCurrent:{name:string,img:string}|undefined;
+
   syncValidatorExample = (invalidTerms:string[]) => (control:AbstractControl) => {
     const { value } = control ; let validationErrors:ValidationErrors|null = null ;
     if(invalidTerms.includes(value)){validationErrors = {['invalidTerm']:true}};
@@ -26,7 +28,13 @@ export class SecondComponent {
     if(Object.keys(validationErrors).length > 0){return validationErrors}else{return null};
   }
 
-  login(){this.openModal.openModalWithComponent()};
+  login(){
+    const mySuscription = this.openModal.openModalWithComponent() ; if(!mySuscription){return} ;
+    mySuscription.subscribe(() => {
+      this.digiCurrent = this.formAsyncValidators.digiCurrent;
+      mySuscription.unsubscribe();
+    }); 
+  }
 
   public user:FormGroup = this.forma.group({
     name:['',[Validators.required,Validators.minLength(5),this.syncValidatorExample(['Carlos','Pepe'])]],
@@ -37,7 +45,7 @@ export class SecondComponent {
   constructor(
     private forma:FormBuilder,
     private formAsyncValidators:FormAsyncValidatorsService,
-    private openModal:OpenModalService
+    public openModal:OpenModalService
   ){};
 
 }
