@@ -15,7 +15,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { ModalComponentComponent } from './components/modal-component/modal-component.component';
 
 const materialModules:any = [
   BrowserAnimationsModule,MatInputModule,
@@ -38,7 +37,7 @@ const routes: Routes = [
     SecondComponent,
     ThirdComponent,
     NavigateButtonComponent,
-    AddButtonComponent,
+    AddButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +48,6 @@ const routes: Routes = [
     BrowserAnimationsModule
   ],
   providers: [],
-  entryComponents:[ModalComponentComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

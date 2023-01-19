@@ -10,9 +10,18 @@ import { FormAsyncValidatorsService } from 'src/app/services/form-async-validato
 })
 export class ThirdComponent {
 
+  name!:string;
+  img!:string;
   modalRef?: BsModalRef;
   
-  openModal(template:TemplateRef<any>){this.modalRef = this.modalService.show(template)}
+  openModal(template:TemplateRef<any>){
+    const digimon = this.digimon.digiModals.pop();
+    if(digimon){
+      const { name , img } = digimon;
+      this.name = name ; this.img = img;
+    }
+    this.modalRef = this.modalService.show(template);
+  }
   
   constructor(
     private modalService: BsModalService,
