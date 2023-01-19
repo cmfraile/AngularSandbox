@@ -6,6 +6,7 @@ import { ValidationErrors } from '@angular/forms';
 import { ValidatorFn } from '@angular/forms';
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { FormAsyncValidatorsService } from 'src/app/services/form-async-validators.service';
+import { OpenModalService } from 'src/app/services/open-modal.service';
 import { ModalComponentComponent } from '../modal-component/modal-component.component';
 
 @Component({
@@ -29,13 +30,7 @@ export class SecondComponent {
     if(Object.keys(validationErrors).length > 0){return validationErrors}else{return null};
   }
 
-  bsModalRef?:BsModalRef;
-  loginModal(){
-    const initialState:ModalOptions = { initialState: {digimon:this.formAsyncValidators.digiModals.pop()} };
-    this.bsModalRef = this.modalService.show(ModalComponentComponent,initialState);
-  }
-
-  login(){this.loginModal()};
+  login(){this.openModal.digimonLoginModal()};
 
   public user:FormGroup = this.forma.group({
     name:['',[Validators.required,Validators.minLength(5),this.syncValidatorExample(['Carlos','Pepe'])]],
@@ -46,7 +41,7 @@ export class SecondComponent {
   constructor(
     private forma:FormBuilder,
     private formAsyncValidators:FormAsyncValidatorsService,
-    private modalService:BsModalService
+    private openModal:OpenModalService
   ){};
 
 }
