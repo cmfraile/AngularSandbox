@@ -37,7 +37,7 @@ export class ModalComponent {
     private modalService: BsModalService,
     private formAsync: FormAsyncValidatorsService,
     private changeDetection: ChangeDetectorRef,
-  ){ this.eventsDeploy() ; this.formAsync.digiCurrent = {name:this.name,img:this.img} }
+  ){ this.eventsDeploy() }
 
   //ngOnDestroy(): void { this.unsubscribe() }
 

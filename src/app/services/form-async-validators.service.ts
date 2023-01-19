@@ -14,8 +14,6 @@ export class FormAsyncValidatorsService {
   digiCheckName:string[] = [] ;
   digiModals:{name:string,img:string}[] = [];
 
-  digiCurrent:any = {}
-
   private digimonQuery():Observable<digimon[]>{return this.http.get<digimon[]>(this.digiquery)}
 
   constructor(private http:HttpClient){

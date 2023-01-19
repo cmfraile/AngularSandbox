@@ -31,7 +31,7 @@ export class SecondComponent {
   login(){
     const mySuscription = this.openModal.openModalWithComponent() ; if(!mySuscription){return} ;
     mySuscription.subscribe(() => {
-      this.digiCurrent = this.formAsyncValidators.digiCurrent;
+      console.log('POKE');
       mySuscription.unsubscribe();
     }); 
   }
