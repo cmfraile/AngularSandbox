@@ -5,7 +5,6 @@ import { ValidationErrors , AbstractControl } from '@angular/forms';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { delay, map, of, tap } from 'rxjs';
 import { Observable } from 'rxjs';
-import { AsyncValidatorFn } from '@angular/forms';
 import * as _ from 'underscore';
 
 @Component({
@@ -17,7 +16,9 @@ export class FourthComponent {
 
   $asyncValidatorExample = (control:AbstractControl):Observable<ValidationErrors | null> => {
 
-    const check = () => (!this.formAsyncValidators.digiCheckName.includes(control.value) && !control.pristine) ? { ['invalidTerm']:true } : null
+    if(control.pristine){ return of(null) };
+
+    const check = () => (!this.formAsyncValidators.digiCheckName.includes(control.value)) ? { ['invalidTerm']:true } : null ;
     
     return of(null).pipe(
       delay(2000),
