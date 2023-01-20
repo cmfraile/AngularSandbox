@@ -10,17 +10,17 @@ interface digimon {name:string,img:string,level:string}
 })
 export class FormAsyncValidatorsService {
 
-  public digiquery:string = 'https://digimon-api.vercel.app/api/digimoan';
+  public digiquery:string = 'https://digimon-api.vercel.app/api/digimon';
   digiCheckName:string[] = [] ;
   digiModals:{name:string,img:string}[] = [];
 
-  public digimonQuery():Observable<digimon[]>{return this.http.get<digimon[]>(this.digiquery)};
+  public digimonQuery():Observable<any>{return this.http.get<digimon[]>(this.digiquery)};
 
   constructor(private http:HttpClient){
     this.digimonQuery().subscribe({
       next:(resp) => {
-      this.digiModals = shuffle(resp.map(x => ({name:x.name,img:x.img})));
-      this.digiCheckName = resp.map(x => x.name.toLowerCase());
+      this.digiModals = shuffle(resp.map((x:any) => ({name:x.name,img:x.img})));
+      this.digiCheckName = resp.map((x:any) => x.name.toLowerCase());
       }
   })
 }

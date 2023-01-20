@@ -22,12 +22,12 @@ export class FourthComponent {
     if(control.pristine){ return of(null) };
 
     return this.formAsyncValidators.digimonQuery().pipe(
-      delay(2000),
+      delay(50),
       tap(() => { console.log('query!') }),
       map((resp:any) => {
         let validation:ValidationErrors|null = null;
         if(resp.error){validation = {['errorInQuery']:true}};
-        const digiArray:digimon[] = resp.map((x:digimon) => x.name);
+        const digiArray:digimon[] = resp.map((x:digimon) => x.name.toLowerCase());
         if(!digiArray.includes(control.value)){validation = {['invalidTerm']:true}};
         return validation
       })
