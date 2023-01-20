@@ -1,0 +1,7 @@
+<div class="fifth_root centerDefault appWindow">
+    <h3>STEPPER</h3>
+    <form [formGroup]="register" class="loginForm" (keyup.enter)="registerSubmit()">
+        <mat-form-field class="input" appearance="outline"><mat-label>nombre</mat-label><input matInput formControlName="name"></mat-form-field>
+        <mat-form-field class="input" appearance="outline"><mat-label>compañero</mat-label><input matInput formControlName="sidekick"></mat-form-field>
+    </form>
+</div>

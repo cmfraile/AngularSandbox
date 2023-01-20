@@ -18,6 +18,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ModalComponent } from './components/modal/modal.component';
 import { FourthComponent } from './components/fourth/fourth.component';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { FifthComponent } from './components/fifth/fifth.component';
 
 const materialModules:any = [
   BrowserAnimationsModule,MatInputModule,
@@ -31,6 +32,7 @@ const routes: Routes = [
   {path:'2',component:SecondComponent},
   {path:'3',component:ThirdComponent},
   {path:'4',component:FourthComponent},
+  {path:'5',component:FifthComponent},
   {path:'',redirectTo:'1',pathMatch:'full'},
   {path:'**',redirectTo:'1',pathMatch:'full'},
   //{path:'admin',children:rutaspaneladmin},
@@ -45,7 +47,8 @@ const routes: Routes = [
     FourthComponent,
     NavigateButtonComponent,
     AddButtonComponent,
-    ...entryComponents
+    ...entryComponents,
+    FifthComponent
   ],
   imports: [
     BrowserModule,
