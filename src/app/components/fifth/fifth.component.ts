@@ -13,7 +13,6 @@ export class FifthComponent {
 
   validatorMiddleware = (form:any):Observable<ValidationErrors | null> => {
     //Haz por usar el of, ya que el Observable esta deprecated para una mayoria de usos.
-    console.log(form)
     return of<any>(null).pipe(delay(500))
   }
 
