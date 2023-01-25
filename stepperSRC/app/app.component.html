@@ -1,0 +1,47 @@
+<h1>stepper</h1>
+<div class="container">
+  <div class="row"><div class="col">
+
+    <form [formGroup]="form" class="mainstepper">
+      <mat-stepper
+      orientation="vertical"
+      [linear]="true"
+      [selectedIndex]="indexc"
+      #stepper>
+
+        <mat-step [stepControl]="$any(form.get('one'))">
+          <p-dropdown
+            placeholder="select one"
+            appendTo="body"
+            formControlName="one"
+            class="d-flex flex-fill"
+            styleClass="flex-fill"
+            [options]="oneOptions"
+            optionLabel="nombre"
+            optionValue="id"
+            >
+          </p-dropdown>
+        </mat-step>
+
+        <mat-step [stepControl]="$any(form.get('two'))">
+          <p-dropdown
+            placeholder="select two"
+            appendTo="body"
+            formControlName="two"
+            class="d-flex flex-fill"
+            styleClass="flex-fill"
+            [options]="twoOptions"
+            optionLabel="nombre"
+            optionValue="id">
+          </p-dropdown>
+        </mat-step>
+
+      </mat-stepper>
+    </form>
+
+  </div></div>
+  <div class="row"><div class="col">
+    <button (click)="move(1)">palante</button>
+    <button (click)="move(-1)">patras</button>
+  </div></div>
+</div>
